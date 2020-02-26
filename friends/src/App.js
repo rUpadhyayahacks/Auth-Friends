@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>BESTEES!!</h1>
+        <h1>Homiez</h1>
         <nav className="nav">
           <Link to="/login">Login</Link>
           <Link to="/protected">Protected Page</Link>

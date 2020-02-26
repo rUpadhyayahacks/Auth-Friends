@@ -1,4 +1,6 @@
-import axios from "axios";
+import React, { Component } from "react";
+
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 class Login extends Component {
   state = {
@@ -19,14 +21,16 @@ class Login extends Component {
 
   login = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/login", this.state.credentials)
+    axiosWithAuth()
+      .post("/api/login", this.state.credentials)
       .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
+        
+        window.localStorage.setItem("token", res.data.payload);
+        console.log(res.data.payload)
         this.props.history.push("/protected");
       })
-      .catch(err => console.log("Error", err));
+      .catch(err => console.log(err));
+      console.log('credentials', this.state.credentials);
   };
 
   render() {
